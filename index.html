@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nigel Lee | Computer Engineering</title>
+<meta name="description" content="Nigel Lee, computer engineering student at Toronto Metropolitan University. Embedded systems, software and information security.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --floor:#e8eaeb; --paper:#f7f8f8; --tape:#000; --text:#1d2125; --muted:#566069; --rule:#c5cacd; --robot:#f5c400;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--floor:#1b1e21; --paper:#121416; --tape:#ececec; --text:#e6e8ea; --muted:#9aa4ac; --rule:#33393e;}
+}
+:root[data-theme="dark"]{--floor:#1b1e21; --paper:#121416; --tape:#ececec; --text:#e6e8ea; --muted:#9aa4ac; --rule:#33393e;}
+html{scroll-padding-top:env(safe-area-inset-top,0px);color-scheme:light dark}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--text);font:400 1.0625rem/1.65 "Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:46rem;margin:0 auto;padding:0 1.5rem}
+a{color:inherit;text-decoration-thickness:2px;text-underline-offset:3px}
+a:hover{text-decoration-color:var(--robot)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--text);outline-offset:3px}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.1;margin:0}
+header.top{display:flex;justify-content:space-between;gap:1rem;padding:1.25rem 0;font-weight:600;font-size:.95rem}
+header.top nav{display:flex;gap:1.25rem;flex-wrap:wrap}
+.hero{padding:4rem 0 2.5rem}
+h1{font-size:clamp(3.2rem,12vw,6.5rem);font-weight:800;letter-spacing:-.035em}
+.lead{font-size:clamp(1.15rem,2.6vw,1.4rem);max-width:34rem;margin:1.5rem 0 0;line-height:1.5}
+.floor{background:var(--floor);border-block:1px solid var(--rule);padding:1.25rem 0 .75rem}
+.floor svg{display:block;width:100%;height:auto;max-height:11rem}
+.floor p{margin:.5rem 0 0;font-size:.9rem;color:var(--muted)}
+section{padding:4rem 0 0}
+h2{font-size:2rem;font-weight:800;letter-spacing:-.02em;margin-bottom:1.75rem}
+.job{position:relative;padding:0 0 2.25rem 1.75rem;border-left:6px solid var(--tape)}
+.job:last-child{padding-bottom:0}
+.job::before{content:"";position:absolute;left:-6px;top:.35rem;width:1rem;height:6px;background:var(--tape)}
+.job.now::before{width:1.25rem;height:1.25rem;border-radius:50%;left:-.8rem;top:.15rem;background:var(--robot);border:3px solid var(--tape)}
+.meta{margin:.25rem 0 .9rem;color:var(--muted);font-size:.95rem}
+h3{font-size:1.35rem;font-weight:500}
+ul{margin:0;padding-left:1.15rem}
+li{margin:.45rem 0;max-width:40rem}
+.proj{padding:1.5rem 0;border-top:1px solid var(--rule)}
+.proj:first-of-type{border-top:2px solid var(--text)}
+.tools{display:block;color:var(--muted);font-size:.95rem;margin:.25rem 0 .75rem}
+dl{margin:0}
+.skillrow{display:grid;grid-template-columns:11rem 1fr;gap:.25rem 1.5rem;padding:.9rem 0;border-top:1px solid var(--rule)}
+dt{font-weight:600}
+dd{margin:0}
+.edu p{margin:.35rem 0}
+footer{margin-top:5rem;padding:2.5rem 0 3rem;border-top:6px solid var(--tape)}
+footer h2{margin-bottom:1rem}
+.contact{display:flex;flex-wrap:wrap;gap:.5rem 2rem;font-size:1.15rem;font-weight:600}
+@media (max-width:34rem){.skillrow{grid-template-columns:1fr}.hero{padding-top:2.5rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <span>Nigel Lee</span>
+    <nav aria-label="Sections"><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a></nav>
+  </header>
+  <div class="hero">
+    <h1>Nigel Lee</h1>
+    <p class="lead">Computer engineering student at Toronto Metropolitan University. I write firmware, build desktop software, and help keep access to bank systems under control at CIBC.</p>
+  </div>
+</div>
+
+<div class="floor" role="img" aria-label="A black tape path on a floor with a small yellow robot following it">
+  <svg viewBox="0 0 1200 180" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+    <path id="tape" d="M0 130H150V40H330V140H510V60H690V150H870V50H1050V120H1200" fill="none" stroke="var(--tape)" stroke-width="9" stroke-linejoin="miter" vector-effect="non-scaling-stroke"/>
+    <circle id="bot" r="12" fill="var(--robot)" stroke="var(--tape)" stroke-width="3" cx="0" cy="130">
+      <animateMotion id="mot" dur="9s" repeatCount="indefinite" calcMode="linear"><mpath href="#tape"/></animateMotion>
+    </circle>
+  </svg>
+  <div class="wrap"><p>My robot follows taped paths using sensors under its body. This one just follows the tape.</p></div>
+</div>
+
+<main class="wrap">
+  <section id="experience">
+    <h2>Experience</h2>
+    <article class="job now">
+      <h3>Information Security Analyst, CIBC</h3>
+      <p class="meta">Sep 2026 to present, Toronto</p>
+      <ul>
+        <li>Ran automated access review campaigns in AllAccess covering 500+ users, and supported manual reviews by consolidating user and entitlement data for accurate attestations.</li>
+        <li>Validated employee access to CIBC applications and systems, flagging discrepancies and supporting IAM governance, least privilege and segregation of duties.</li>
+        <li>Tracked attestation completion, outstanding reviews and remediation in Excel, and reported on campaign progress.</li>
+      </ul>
+    </article>
+    <article class="job">
+      <h3>Technical Systems Analyst, CIBC</h3>
+      <p class="meta">May 2026 to Sep 2026, Toronto</p>
+      <ul>
+        <li>Imaged, configured and deployed 150+ laptops for CIBC departments to meet software, access and setup requirements.</li>
+        <li>Handled incidents and service requests in ServiceNow and ARS, keeping documentation current and coordinating escalations.</li>
+        <li>Automated recurring tasks, including email-related work, and used Excel for accurate technical reporting.</li>
+        <li>Supported end users with workstation, access, email and general troubleshooting.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <article class="proj">
+      <h3>Autonomous self-navigating robot</h3>
+      <span class="tools">Assembly, HCS12 microcontroller | Sep 2025 to Dec 2025</span>
+      <ul>
+        <li>Wrote firmware for a sensor-driven robot that navigates a taped maze, telling black tape (on path) from white floor (off path) with underside guider sensors.</li>
+        <li>Built real-time control logic for off-path detection and for adjusting after hitting walls.</li>
+        <li>Debugged sensor readings and calibrated thresholds to improve line tracking and stability.</li>
+      </ul>
+    </article>
+    <article class="proj">
+      <h3>Bookstore application</h3>
+      <span class="tools">Java, JavaFX, NetBeans | Jan 2025 to Apr 2025</span>
+      <ul>
+        <li>Built a JavaFX desktop app with separate roles for administrators and customers.</li>
+        <li>Implemented inventory management, customer registration, purchases and reward point tracking.</li>
+        <li>Used software design patterns to keep the architecture modular and maintainable.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <dl>
+      <div class="skillrow"><dt>Languages</dt><dd>Python (NumPy, pandas, Matplotlib, scikit-learn), Java, C, C++, Assembly, Verilog, VHDL, MATLAB, SQL</dd></div>
+      <div class="skillrow"><dt>Security and IT</dt><dd>AllAccess, ServiceNow, ARS, Microsoft Excel, Git</dd></div>
+      <div class="skillrow"><dt>Dev and hardware</dt><dd>Quartus II, GCC, Jupyter, VS Code, CodeWarrior, FPGA, HCS12 microcontroller</dd></div>
+      <div class="skillrow"><dt>Operating systems</dt><dd>Windows, Linux, macOS</dd></div>
+    </dl>
+  </section>
+
+  <section id="education" class="edu">
+    <h2>Education</h2>
+    <h3>Toronto Metropolitan University</h3>
+    <p class="meta">Bachelor of Engineering, Computer Engineering | Sep 2023 to present</p>
+    <ul>
+      <li><strong>Embedded and hardware:</strong> Microprocessor Systems, Digital Systems, Electronic Circuits, Computer Organization and Architecture</li>
+      <li><strong>Signals:</strong> Signals and Systems I and II, Control Systems</li>
+      <li><strong>Software and algorithms:</strong> Data Structures and Algorithms, Advanced Algorithms, Object-Oriented Analysis and Design, Software Systems, Operating Systems</li>
+    </ul>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <div class="contact">
+      <a href="mailto:nigellee2005@gmail.com">nigellee2005@gmail.com</a>
+      <a href="tel:+16472030355">647-203-0355</a>
+      <!-- Add your LinkedIn: <a href="https://www.linkedin.com/in/YOUR-HANDLE">LinkedIn</a> -->
+    </div>
+  </div>
+</footer>
+
+<script>
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  var m = document.getElementById("mot"), b = document.getElementById("bot");
+  if (m) m.remove();
+  if (b) { b.setAttribute("cx", "1100"); b.setAttribute("cy", "120"); }
+}
+</script>
+</body>
+</html>
