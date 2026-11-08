@@ -4,166 +4,288 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Nigel Lee | Computer Engineering</title>
-<meta name="description" content="Nigel Lee, computer engineering student at Toronto Metropolitan University. Embedded systems, software and information security.">
+<meta name="description" content="Nigel Lee: computer engineering student at Toronto Metropolitan University working across embedded systems, software and access governance.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --floor:#e8eaeb; --paper:#f7f8f8; --tape:#000; --text:#1d2125; --muted:#566069; --rule:#c5cacd; --robot:#f5c400;
+  --bg:#faf8f4; --bg2:#f0ebe2; --copper:#a8541a; --pulse:#2f5bd0; --text:#14213d; --muted:#55607a; --line:#ddd5c6;
   box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){--floor:#1b1e21; --paper:#121416; --tape:#ececec; --text:#e6e8ea; --muted:#9aa4ac; --rule:#33393e;}
+  :root:not([data-theme="light"]){--bg:#faf8f4; --bg2:#f0ebe2; --copper:#a8541a; --pulse:#2f5bd0; --text:#14213d; --muted:#55607a; --line:#ddd5c6;}
 }
-:root[data-theme="dark"]{--floor:#1b1e21; --paper:#121416; --tape:#ececec; --text:#e6e8ea; --muted:#9aa4ac; --rule:#33393e;}
-html{scroll-padding-top:env(safe-area-inset-top,0px);color-scheme:light dark}
+:root[data-theme="dark"]{--bg:#faf8f4; --bg2:#f0ebe2; --copper:#a8541a; --pulse:#2f5bd0; --text:#14213d; --muted:#55607a; --line:#ddd5c6;}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth;color-scheme:light}
 *,*::before,*::after{box-sizing:inherit}
-body{margin:0;background:var(--paper);color:var(--text);font:400 1.0625rem/1.65 "Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
-.wrap{max-width:46rem;margin:0 auto;padding:0 1.5rem}
-a{color:inherit;text-decoration-thickness:2px;text-underline-offset:3px}
-a:hover{text-decoration-color:var(--robot)}
-a:focus-visible,button:focus-visible{outline:3px solid var(--text);outline-offset:3px}
-h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.1;margin:0}
-header.top{display:flex;justify-content:space-between;gap:1rem;padding:1.25rem 0;font-weight:600;font-size:.95rem}
-header.top nav{display:flex;gap:1.25rem;flex-wrap:wrap}
-.hero{padding:4rem 0 2.5rem}
-h1{font-size:clamp(3.2rem,12vw,6.5rem);font-weight:800;letter-spacing:-.035em}
-.lead{font-size:clamp(1.15rem,2.6vw,1.4rem);max-width:34rem;margin:1.5rem 0 0;line-height:1.5}
-.floor{background:var(--floor);border-block:1px solid var(--rule);padding:1.25rem 0 .75rem}
-.floor svg{display:block;width:100%;height:auto;max-height:11rem}
-.floor p{margin:.5rem 0 0;font-size:.9rem;color:var(--muted)}
-section{padding:4rem 0 0}
-h2{font-size:2rem;font-weight:800;letter-spacing:-.02em;margin-bottom:1.75rem}
-.job{position:relative;padding:0 0 2.25rem 1.75rem;border-left:6px solid var(--tape)}
-.job:last-child{padding-bottom:0}
-.job::before{content:"";position:absolute;left:-6px;top:.35rem;width:1rem;height:6px;background:var(--tape)}
-.job.now::before{width:1.25rem;height:1.25rem;border-radius:50%;left:-.8rem;top:.15rem;background:var(--robot);border:3px solid var(--tape)}
-.meta{margin:.25rem 0 .9rem;color:var(--muted);font-size:.95rem}
-h3{font-size:1.35rem;font-weight:500}
-ul{margin:0;padding-left:1.15rem}
-li{margin:.45rem 0;max-width:40rem}
-.proj{padding:1.5rem 0;border-top:1px solid var(--rule)}
-.proj:first-of-type{border-top:2px solid var(--text)}
-.tools{display:block;color:var(--muted);font-size:.95rem;margin:.25rem 0 .75rem}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.0625rem/1.7 "Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration-thickness:2px;text-underline-offset:4px}
+a:hover{color:var(--copper)}
+a:focus-visible{outline:3px solid var(--copper);outline-offset:3px}
+.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.5rem}
+/* hero */
+.hero{position:relative;min-height:calc(100svh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;justify-content:center;overflow:hidden;border-bottom:2px solid var(--copper)}
+.board{position:absolute;inset:0;width:100%;height:100%;opacity:.9;-webkit-mask-image:linear-gradient(to right,transparent 5%,#000 65%);mask-image:linear-gradient(to right,transparent 5%,#000 65%)}
+.trace{fill:none;stroke:var(--copper);stroke-width:4;stroke-linejoin:round;opacity:.55}
+.pulse{fill:none;stroke:var(--pulse);stroke-width:4;stroke-linecap:round;stroke-dasharray:40 960;animation:run 6s linear infinite}
+.via{fill:var(--bg);stroke:var(--copper);stroke-width:4}
+@keyframes run{from{stroke-dashoffset:40}to{stroke-dashoffset:-960}}
+.hero .wrap{position:relative;padding-top:3rem;padding-bottom:5rem}
+.tag{color:var(--copper);font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;margin:0 0 1.25rem}
+h1{font-size:clamp(3.8rem,16vw,11rem);font-weight:800;letter-spacing:-.045em;line-height:.9;margin:0}
+.tagline{font-size:clamp(1.5rem,4vw,2.6rem);font-weight:500;letter-spacing:-.02em;line-height:1.15;max-width:30ch;margin:1.75rem 0 0}
+.about{max-width:36rem;font-size:clamp(1rem,2vw,1.1rem);line-height:1.6;color:var(--muted);margin:1.75rem 0 0}
+.stats{display:flex;flex-wrap:wrap;gap:2rem 3rem;margin:2.5rem 0 0;padding:0;list-style:none}
+.stats b{display:block;font-size:2.4rem;font-weight:800;letter-spacing:-.03em;line-height:1}
+.stats span{font-size:.8rem;color:var(--muted)}
+.open{margin:2.5rem 0 0}
+.open p{margin:0 0 .75rem;font-size:.8rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+.open ul{display:flex;flex-wrap:wrap;gap:.5rem;margin:0;padding:0;list-style:none}
+.open li{border:1px solid var(--copper);padding:.25rem .8rem;font-size:.85rem}
+.cta{display:flex;flex-wrap:wrap;gap:1rem;margin:2rem 0 0}
+.cta a{padding:.7rem 1.4rem;border:2px solid var(--copper);text-decoration:none;font-weight:600}
+.cta a:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+.cue{position:absolute;left:1.5rem;bottom:1.5rem;font-size:.8rem;color:var(--muted);text-decoration:none}
+.cue i{display:inline-block;animation:bob 1.6s ease-in-out infinite;font-style:normal}
+@keyframes bob{50%{transform:translateY(5px)}}
+/* sections */
+section{padding:6rem 0 0}
+.label{color:var(--copper);font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;margin:0 0 .5rem}
+h2{font-size:clamp(2.2rem,6vw,3.5rem);font-weight:800;letter-spacing:-.03em;line-height:1;margin:0 0 2.5rem}
+.row{display:grid;grid-template-columns:13rem 1fr;gap:.5rem 2.5rem;padding:1.5rem 0;border-top:1px solid var(--line)}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row h3{margin:0;font-size:1.3rem;font-weight:500;line-height:1.25}
+.row .when{color:var(--muted);font-size:.8rem;margin-top:.35rem}
+.row p{margin:0;max-width:34rem}
+.proj{margin:0 0 4rem;padding:2rem;background:var(--bg2);border:1px solid var(--line);border-left:6px solid var(--copper)}
+.proj h3{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:0 0 .5rem}
+.proj .when{color:var(--muted);font-size:.8rem;margin:0 0 1.5rem}
+.proj .lede{font-size:1.2rem;line-height:1.55;max-width:42rem;margin:0 0 2rem}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:2rem}
+.cols h4{margin:0 0 .5rem;color:var(--copper);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.cols p,.cols ul{margin:0;font-size:1rem;line-height:1.6}
+.cols ul{padding-left:1.1rem}
+.cols li{margin:.35rem 0}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:2rem 0 0;padding:0;list-style:none}
+.chips li{border:1px solid var(--copper);padding:.15rem .7rem;font-size:.8rem}
+.demo{margin:2rem 0 0;padding:1.25rem;border:1px dashed var(--copper);background:var(--bg)}
+.demo h4{margin:0 0 .25rem;color:var(--copper);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.demo .hint{margin:0 0 1rem;color:var(--muted);font-size:.95rem;max-width:42rem}
+.demo canvas{display:block;width:100%;height:auto;border:1px solid var(--line);background:#eef1ef}
+.ctl{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.5rem;margin:1rem 0 0;font-size:.85rem}
+.ctl[hidden]{display:none}
+.ctl input[type=range]{width:min(16rem,100%);accent-color:var(--copper)}
+.demo input[type=text]{font:inherit;padding:.4rem .6rem;border:2px solid var(--line);background:var(--bg);color:var(--text);min-width:12rem}
+.demo button{font:inherit;font-size:.85rem;padding:.4rem .9rem;border:2px solid var(--copper);background:transparent;color:var(--text);cursor:pointer}
+.demo button:hover,.demo button[aria-pressed=true]{background:var(--text);color:var(--bg);border-color:var(--text)}
+.demo button:disabled{opacity:.45;cursor:not-allowed;background:transparent;color:var(--text);border-color:var(--copper)}
+.demo button:focus-visible,.demo input:focus-visible{outline:3px solid var(--copper);outline-offset:2px}
+.read{font-size:.85rem;color:var(--muted);margin:.75rem 0 0}
+.shelf{width:100%;border-collapse:collapse;font-size:.95rem;margin:1rem 0 0}
+.shelf th,.shelf td{text-align:left;padding:.5rem}
+.shelf td{border-top:1px solid var(--line)}
+.shelf th{font-size:.75rem;color:var(--copper);letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.courses{margin-top:1rem;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:1.5rem}
+.courses ul{font-size:.95rem}
+.skill{display:grid;grid-template-columns:13rem 1fr;gap:.25rem 2.5rem;padding:1rem 0;border-top:1px solid var(--line)}
+.skill dt{font-size:.85rem;color:var(--copper)}
+.skill dd{margin:0}
 dl{margin:0}
-.skillrow{display:grid;grid-template-columns:11rem 1fr;gap:.25rem 1.5rem;padding:.9rem 0;border-top:1px solid var(--rule)}
-dt{font-weight:600}
-dd{margin:0}
-.edu p{margin:.35rem 0}
-footer{margin-top:5rem;padding:2.5rem 0 3rem;border-top:6px solid var(--tape)}
-footer h2{margin-bottom:1rem}
-.contact{display:flex;flex-wrap:wrap;gap:.5rem 2rem;font-size:1.15rem;font-weight:600}
-@media (max-width:34rem){.skillrow{grid-template-columns:1fr}.hero{padding-top:2.5rem}}
+footer{margin-top:7rem;padding:4rem 0 4rem;background:var(--bg2);border-top:2px solid var(--copper)}
+footer h2{margin-bottom:1.5rem}
+.contact{display:flex;flex-wrap:wrap;gap:.75rem 2.5rem;font-size:1.25rem}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+@media (max-width:40rem){
+  .row,.skill{grid-template-columns:1fr}
+  .board{opacity:.45}
+  .proj{padding:1.25rem}
+  section{padding-top:4.5rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .pulse,.cue i{animation:none}
+  .rv{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header class="top">
-    <span>Nigel Lee</span>
-    <nav aria-label="Sections"><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a></nav>
-  </header>
-  <div class="hero">
-    <h1>Nigel Lee</h1>
-    <p class="lead">Computer engineering student at Toronto Metropolitan University. I write firmware, build desktop software, and help keep access to bank systems under control at CIBC.</p>
-  </div>
-</div>
-
-<div class="floor" role="img" aria-label="A black tape path on a floor with a small yellow robot following it">
-  <svg viewBox="0 0 1200 180" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-    <path id="tape" d="M0 130H150V40H330V140H510V60H690V150H870V50H1050V120H1200" fill="none" stroke="var(--tape)" stroke-width="9" stroke-linejoin="miter" vector-effect="non-scaling-stroke"/>
-    <circle id="bot" r="12" fill="var(--robot)" stroke="var(--tape)" stroke-width="3" cx="0" cy="130">
-      <animateMotion id="mot" dur="9s" repeatCount="indefinite" calcMode="linear"><mpath href="#tape"/></animateMotion>
-    </circle>
+<header class="hero" id="top">
+  <svg class="board" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g>
+      <path class="trace" id="a" pathLength="1000" d="M1200 120H900L820 200H600L540 260H300"/>
+      <path class="pulse" pathLength="1000" d="M1200 120H900L820 200H600L540 260H300" style="animation-delay:0s"/>
+      <path class="trace" pathLength="1000" d="M1200 330H980L900 410H700L640 470H420"/>
+      <path class="pulse" pathLength="1000" d="M1200 330H980L900 410H700L640 470H420" style="animation-delay:-2s;animation-duration:7s"/>
+      <path class="trace" pathLength="1000" d="M1200 560H1040L960 640H760L700 700H520L460 760H200"/>
+      <path class="pulse" pathLength="1000" d="M1200 560H1040L960 640H760L700 700H520L460 760H200" style="animation-delay:-4s;animation-duration:8s"/>
+      <path class="trace" pathLength="1000" d="M1200 700H1100L1060 740H900"/>
+      <path class="pulse" pathLength="1000" d="M1200 700H1100L1060 740H900" style="animation-delay:-1s;animation-duration:5s"/>
+      <circle class="via" cx="300" cy="260" r="10"/><circle class="via" cx="420" cy="470" r="10"/><circle class="via" cx="200" cy="760" r="10"/><circle class="via" cx="900" cy="740" r="10"/>
+    </g>
   </svg>
-  <div class="wrap"><p>My robot follows taped paths using sensors under its body. This one just follows the tape.</p></div>
-</div>
+  <div class="wrap">
+    <p class="tag mono">Hello, world. I&rsquo;m</p>
+    <h1>Nigel Lee</h1>
+    <p class="tagline">Building, securing and making sense of the systems the world runs on.</p>
+    <p class="about">I&rsquo;m a fourth-year computer engineering student at Toronto Metropolitan University. At CIBC, I work on the security side, making sure the right people have the right access, and nothing more. Outside of class, you&rsquo;ll find me playing tennis, running, hiking, or reading up on nutrition.</p>
+    <div class="open">
+      <p class="mono">Open to</p>
+      <ul class="mono"><li>Cybersecurity</li><li>Identity and access management</li><li>GRC</li><li>Data analytics</li><li>Data science</li><li>Data engineering</li><li>Machine learning</li><li>Embedded systems</li><li>Firmware</li><li>Software</li></ul>
+    </div>
+    <div class="cta"><a href="#projects">See my projects</a><a href="#contact">Get in touch</a></div>
+  </div>
+  <a class="cue mono" href="#experience">scroll <i>&darr;</i></a>
+</header>
 
 <main class="wrap">
   <section id="experience">
-    <h2>Experience</h2>
-    <article class="job now">
-      <h3>Information Security Analyst, CIBC</h3>
-      <p class="meta">Sep 2026 to present, Toronto</p>
-      <ul>
-        <li>Ran automated access review campaigns in AllAccess covering 500+ users, and supported manual reviews by consolidating user and entitlement data for accurate attestations.</li>
-        <li>Validated employee access to CIBC applications and systems, flagging discrepancies and supporting IAM governance, least privilege and segregation of duties.</li>
-        <li>Tracked attestation completion, outstanding reviews and remediation in Excel, and reported on campaign progress.</li>
-      </ul>
-    </article>
-    <article class="job">
-      <h3>Technical Systems Analyst, CIBC</h3>
-      <p class="meta">May 2026 to Sep 2026, Toronto</p>
-      <ul>
-        <li>Imaged, configured and deployed 150+ laptops for CIBC departments to meet software, access and setup requirements.</li>
-        <li>Handled incidents and service requests in ServiceNow and ARS, keeping documentation current and coordinating escalations.</li>
-        <li>Automated recurring tasks, including email-related work, and used Excel for accurate technical reporting.</li>
-        <li>Supported end users with workstation, access, email and general troubleshooting.</li>
-      </ul>
-    </article>
+    <p class="label mono">01 / Experience</p>
+    <h2>Where I&rsquo;ve worked</h2>
+    <div class="rv">
+      <div class="row">
+        <div><h3>CIBC</h3><div class="when mono">Sep 2026 &ndash; present</div></div>
+        <p><strong>Analyst, Access Governance Coordinator.</strong> I run access review campaigns covering 500+ users and validate who has access to what, reaching a 98.9% completion rate.</p>
+      </div>
+      <div class="row">
+        <div><h3>CIBC</h3><div class="when mono">May 2026 &ndash; Sep 2026</div></div>
+        <p><strong>Technical Systems Analyst.</strong> I deployed 150+ laptops, managed incidents and service requests in ServiceNow and ARS, and delivered Tier 2 end-user support, resolving complex workstation, network and access issues to keep people productive.</p>
+      </div>
+    </div>
   </section>
 
   <section id="projects">
-    <h2>Projects</h2>
-    <article class="proj">
+    <p class="label mono">02 / Projects</p>
+    <h2>Things I&rsquo;ve built</h2>
+
+    <article class="proj rv">
       <h3>Autonomous self-navigating robot</h3>
-      <span class="tools">Assembly, HCS12 microcontroller | Sep 2025 to Dec 2025</span>
-      <ul>
-        <li>Wrote firmware for a sensor-driven robot that navigates a taped maze, telling black tape (on path) from white floor (off path) with underside guider sensors.</li>
-        <li>Built real-time control logic for off-path detection and for adjusting after hitting walls.</li>
-        <li>Debugged sensor readings and calibrated thresholds to improve line tracking and stability.</li>
-      </ul>
+      <p class="when mono">Sep 2025 &ndash; Dec 2025 | Embedded systems</p>
+      <p class="lede">A robot that drives itself through a maze made of tape on the floor, running firmware I wrote in assembly for an HCS12 microcontroller.</p>
+      <div class="cols">
+        <div><h4 class="mono">The problem</h4><p>The maze path is black tape on a white surface. The robot has to stay on the black, notice when it has drifted off, and recover when it runs into a wall, all in real time with no help from a computer.</p></div>
+        <div><h4 class="mono">How it works</h4><p>Guider sensors on the underside of the robot read the surface beneath it. The firmware compares those readings against thresholds to decide whether the robot is on the path (black) or off it (white), and the control logic steers accordingly.</p></div>
+        <div><h4 class="mono">What I built</h4><ul><li>Firmware for the sensor-driven robot, written in assembly</li><li>Real-time control logic for detecting when it leaves the path</li><li>Collision adjustment for when it meets a wall</li></ul></div>
+        <div><h4 class="mono">The hard part</h4><p>Line tracking is only as good as its sensor readings. I debugged what the guider sensors were reporting and calibrated the threshold values, which improved tracking accuracy and kept the robot&rsquo;s navigation stable.</p></div>
+      </div>
+      <div class='demo'><h4 class='mono'>Try it: line-following sim</h4><p class='hint'>A simplified simulation, not my actual firmware. The robot reads three noisy sensors under its nose and compares each reading to a threshold to decide &ldquo;tape or floor.&rdquo; It starts on the left and has to reach the finish line on the right. It rolls down the straight, overshoots the turns, bumps the walls, backs up and readjusts, then stops when it finishes. Press Reset to run it again, or drag the threshold to the extremes and watch it struggle.</p><canvas id='rb' width='640' height='260' role='img' aria-label='Simulation of a robot following black tape from a start on the left to a finish on the right, bumping walls at the turns'></canvas><div class='ctl mono'><label>Threshold <input id='rbth' type='range' min='0' max='255' value='128'> <b id='rbthv'>128</b></label><button id='rbrun' type='button'>Pause</button><button id='rbreset' type='button'>Reset</button></div><p class='read mono' id='rbread'></p></div>
+      <ul class="chips mono"><li>Assembly</li><li>HCS12 microcontroller</li><li>Sensors</li><li>Real-time control</li></ul>
     </article>
-    <article class="proj">
+
+    <article class="proj rv">
       <h3>Bookstore application</h3>
-      <span class="tools">Java, JavaFX, NetBeans | Jan 2025 to Apr 2025</span>
-      <ul>
-        <li>Built a JavaFX desktop app with separate roles for administrators and customers.</li>
-        <li>Implemented inventory management, customer registration, purchases and reward point tracking.</li>
-        <li>Used software design patterns to keep the architecture modular and maintainable.</li>
-      </ul>
+      <p class="when mono">Jan 2025 &ndash; Apr 2025 | Desktop software</p>
+      <p class="lede">A JavaFX desktop app for running a bookstore, with separate experiences for the people who manage it and the people who shop in it.</p>
+      <div class="cols">
+        <div><h4 class="mono">The problem</h4><p>A bookstore needs to track inventory and customers, handle purchases, and reward repeat buyers, while making sure each kind of user only sees and does what they should.</p></div>
+        <div><h4 class="mono">How it works</h4><p>Role-based access separates administrators from customers. Administrators manage the stock, while customers register, make purchases and earn reward points.</p></div>
+        <div><h4 class="mono">What I built</h4><ul><li>Inventory management</li><li>Customer registration</li><li>Purchases and reward point tracking</li><li>A full-stack desktop app in Java and JavaFX</li></ul></div>
+        <div><h4 class="mono">Design approach</h4><p>I used object-oriented design and software design patterns to keep the code modular, so features could be added or changed without breaking the rest of the app.</p></div>
+      </div>
+      <div class='demo' id='bk'><h4 class='mono'>Try it: role-based bookstore</h4><p class='hint'>A simplified demo with made-up books. Switch roles to see how access changes: customers buy books and earn 1 reward point per dollar, while administrators manage the stock.</p><div class='ctl mono'><button id='bkc' type='button' aria-pressed='true'>Customer</button><button id='bka' type='button' aria-pressed='false'>Administrator</button><span id='bkpts'></span></div><div style='overflow-x:auto'><table class='shelf'><thead><tr><th>Title</th><th>Price</th><th>Stock</th><th>Action</th></tr></thead><tbody id='bkbody'></tbody></table></div><div class='ctl mono' id='bkadm' hidden><input id='bkt' type='text' placeholder='New book title' maxlength='40' aria-label='New book title'><button id='bkadd' type='button'>Add book</button></div></div>
+      <ul class="chips mono"><li>Java</li><li>JavaFX</li><li>NetBeans</li><li>OOP</li><li>Design patterns</li></ul>
     </article>
   </section>
 
-  <section id="skills">
-    <h2>Skills</h2>
+  <section id="skills" class="rv">
+    <p class="label mono">03 / Skills</p>
+    <h2>Toolbox</h2>
     <dl>
-      <div class="skillrow"><dt>Languages</dt><dd>Python (NumPy, pandas, Matplotlib, scikit-learn), Java, C, C++, Assembly, Verilog, VHDL, MATLAB, SQL</dd></div>
-      <div class="skillrow"><dt>Security and IT</dt><dd>AllAccess, ServiceNow, ARS, Microsoft Excel, Git</dd></div>
-      <div class="skillrow"><dt>Dev and hardware</dt><dd>Quartus II, GCC, Jupyter, VS Code, CodeWarrior, FPGA, HCS12 microcontroller</dd></div>
-      <div class="skillrow"><dt>Operating systems</dt><dd>Windows, Linux, macOS</dd></div>
+      <div class="skill"><dt class="mono">Languages</dt><dd>Python (NumPy, pandas, Matplotlib, scikit-learn), Java, C, C++, Assembly, Verilog, VHDL, MATLAB, SQL</dd></div>
+      <div class="skill"><dt class="mono">Security and IT</dt><dd>AllAccess, ServiceNow, ARS, Microsoft Excel, Git</dd></div>
+      <div class="skill"><dt class="mono">Dev and hardware</dt><dd>Quartus II, GCC, Jupyter, VS Code, CodeWarrior, FPGA, HCS12 microcontroller</dd></div>
+      <div class="skill"><dt class="mono">Operating systems</dt><dd>Windows, Linux, macOS</dd></div>
     </dl>
   </section>
 
-  <section id="education" class="edu">
-    <h2>Education</h2>
-    <h3>Toronto Metropolitan University</h3>
-    <p class="meta">Bachelor of Engineering, Computer Engineering | Sep 2023 to present</p>
-    <ul>
-      <li><strong>Embedded and hardware:</strong> Microprocessor Systems, Digital Systems, Electronic Circuits, Computer Organization and Architecture</li>
-      <li><strong>Signals:</strong> Signals and Systems I and II, Control Systems</li>
-      <li><strong>Software and algorithms:</strong> Data Structures and Algorithms, Advanced Algorithms, Object-Oriented Analysis and Design, Software Systems, Operating Systems</li>
-    </ul>
+  <section id="education" class="rv">
+    <p class="label mono">04 / Education</p>
+    <h2>School</h2>
+    <div class="row">
+      <div><h3>Toronto Metropolitan University</h3><div class="when mono">Sep 2023 &ndash; present</div></div>
+      <div>
+        <p><strong>Bachelor of Engineering, Computer Engineering</strong></p>
+        <p style='margin:.5rem 0 0'>I&rsquo;ve worked on several group projects spanning both hardware and software.</p>
+        <p class='mono' style='margin:1.5rem 0 0;color:var(--muted);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase'>Relevant coursework</p>
+        <div class='cols courses'>
+          <div><h4 class='mono'>Embedded and hardware</h4><ul><li>Microprocessor Systems</li><li>Digital Systems</li><li>Electronic Circuits</li><li>Computer Organization and Architecture</li></ul></div>
+          <div><h4 class='mono'>Signals and mathematics</h4><ul><li>Signals and Systems I and II</li><li>Control Systems</li><li>Probability and Stochastic Processes</li></ul></div>
+          <div><h4 class='mono'>Software and algorithms</h4><ul><li>Data Structures and Algorithms</li><li>Advanced Algorithms</li><li>Object-Oriented Analysis and Design</li><li>Software Systems</li><li>Operating Systems</li></ul></div>
+        </div>
+      </div>
+    </div>
   </section>
 </main>
 
 <footer id="contact">
-  <div class="wrap">
-    <h2>Contact</h2>
-    <div class="contact">
+  <div class="wrap rv">
+    <p class="label mono">05 / Contact</p>
+    <h2>Let&rsquo;s talk</h2>
+    <div class="contact mono">
       <a href="mailto:nigellee2005@gmail.com">nigellee2005@gmail.com</a>
       <a href="tel:+16472030355">647-203-0355</a>
-      <!-- Add your LinkedIn: <a href="https://www.linkedin.com/in/YOUR-HANDLE">LinkedIn</a> -->
+      <!-- Add LinkedIn: <a href="https://www.linkedin.com/in/YOUR-HANDLE">LinkedIn</a> -->
     </div>
   </div>
 </footer>
 
 <script>
-if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  var m = document.getElementById("mot"), b = document.getElementById("bot");
-  if (m) m.remove();
-  if (b) { b.setAttribute("cx", "1100"); b.setAttribute("cy", "120"); }
-}
+(function(){
+  var els = document.querySelectorAll(".rv");
+  if (!("IntersectionObserver" in window)) { els.forEach(function(e){e.classList.add("in")}); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+  }, {threshold:0.12});
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
+<script>
+(function(){var c=document.getElementById('rb');if(!c)return;var g=c.getContext('2d'),W=c.width,H=c.height,s,th=128,vis=false,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,run=!reduce;
+var R=[[40,130],[340,130],[340,210],[600,210]],WL=[[80,88,170,10],[80,162,170,10],[356,100,10,80],[372,100,10,80],[300,226,90,10],[400,172,60,10],[500,172,60,10]];
+function ds(px,py,a,b){var dx=b[0]-a[0],dy=b[1]-a[1],t=((px-a[0])*dx+(py-a[1])*dy)/(dx*dx+dy*dy);t=Math.max(0,Math.min(1,t));return Math.hypot(px-a[0]-t*dx,py-a[1]-t*dy);}
+function dist(x,y){var m=1e9,k;for(k=0;k<R.length-1;k++)m=Math.min(m,ds(x,y,R[k],R[k+1]));return m;}
+function rd(x,y){var v=(dist(x,y)<7?40:215)+(Math.random()-.5)*80;return Math.max(0,Math.min(255,Math.round(v)));}
+function hit(x,y){var k,w;if(x<14||x>W-14||y<14||y>H-14)return true;for(k=0;k<WL.length;k++){w=WL[k];if(x>w[0]-8&&x<w[0]+w[2]+8&&y>w[1]-8&&y<w[1]+w[3]+8)return true;}return false;}
+function pos(o,fw){return [s.x+Math.cos(s.a)*fw-Math.sin(s.a)*o,s.y+Math.sin(s.a)*fw+Math.cos(s.a)*o];}
+var rb=document.getElementById('rbrun');
+function reset(){s={x:40,y:130,a:0,last:1,hits:0,mode:0,cnt:0,rot:0,done:false,l:215,c:215,r:215};}
+function step(){var pl=pos(-9,14),pc=pos(0,14),pr=pos(9,14);s.l=rd(pl[0],pl[1]);s.c=rd(pc[0],pc[1]);s.r=rd(pr[0],pr[1]);var L=s.l<th,C=s.c<th,Rr=s.r<th,v=2.2,da=0,d;
+if(s.mode===1){s.x-=Math.cos(s.a)*1.5;s.y-=Math.sin(s.a)*1.5;s.rot=0;if(--s.cnt<=0)s.mode=2;}
+else if(s.mode===2){d=s.last*.1;s.a+=d;s.rot+=Math.abs(d);if(s.rot>.9&&C)s.mode=0;}
+else{if(L&&Rr){}else if(L){da=-(C?.03:.05);s.last=-1;}else if(Rr){da=(C?.03:.05);s.last=1;}else if(!C){da=s.last*.1;v=1;}
+s.a+=da;s.x+=Math.cos(s.a)*v;s.y+=Math.sin(s.a)*v;
+if(hit(s.x,s.y)){s.hits++;s.mode=1;s.cnt=8;}
+if(s.x>=596){s.done=true;run=false;rb.textContent='Done';rb.disabled=true;}}}
+function draw(){g.fillStyle='#eef1ef';g.fillRect(0,0,W,H);g.strokeStyle='#111';g.lineWidth=14;g.lineJoin='miter';g.beginPath();R.forEach(function(p,k){if(k)g.lineTo(p[0],p[1]);else g.moveTo(p[0],p[1]);});g.stroke();
+var i,j;for(i=0;i<4;i++)for(j=0;j<2;j++){g.fillStyle=(i+j)%2?'#fff':'#111';g.fillRect(596+j*10,190+i*10,10,10);}
+g.strokeStyle='#111';g.lineWidth=1;g.strokeRect(596,190,20,40);g.fillStyle='#111';g.font='bold 11px monospace';g.fillText('START',12,160);g.fillText('FINISH',566,184);g.fillRect(28,118,3,24);
+g.fillStyle='#59606b';WL.forEach(function(w){g.fillRect(w[0],w[1],w[2],w[3]);});g.strokeStyle='#59606b';g.lineWidth=10;g.strokeRect(5,5,W-10,H-10);
+g.save();g.translate(s.x,s.y);g.rotate(s.a);g.fillStyle='#c98d4f';g.strokeStyle='#111';g.lineWidth=2;g.fillRect(-10,-9,22,18);g.strokeRect(-10,-9,22,18);g.restore();
+[[-9,s.l],[0,s.c],[9,s.r]].forEach(function(q){var p=pos(q[0],14);g.beginPath();g.arc(p[0],p[1],3,0,6.283);g.fillStyle=q[1]<th?'#f5c400':'#fff';g.fill();g.strokeStyle='#111';g.lineWidth=1.5;g.stroke();});
+document.getElementById('rbread').textContent=(s.done?'Finished! Press Reset to run again.':s.mode?'Hit a wall: backing up and turning to find the tape':'Sensors L '+s.l+' | C '+s.c+' | R '+s.r+' | '+(dist(s.x,s.y)<10?'On path':'Off path'))+' | Wall bumps: '+s.hits;}
+reset();draw();
+function tick(){if(vis){if(run)step();draw();}requestAnimationFrame(tick);}
+if('IntersectionObserver' in window){new IntersectionObserver(function(e){vis=e[0].isIntersecting;}).observe(c);}else{vis=true;}
+rb.textContent=run?'Pause':'Run';
+rb.onclick=function(){if(s.done)return;run=!run;rb.textContent=run?'Pause':'Run';};
+document.getElementById('rbreset').onclick=function(){reset();run=true;rb.disabled=false;rb.textContent='Pause';draw();};
+document.getElementById('rbth').oninput=function(){th=+this.value;document.getElementById('rbthv').textContent=th;};
+tick();})();
+(function(){var body=document.getElementById('bkbody');if(!body)return;
+var B=[['Data Structures Handbook',30,5],['The Silent Compiler',18,3],['Circuits for Beginners',24,4],['Run Faster, Eat Better',16,6]].map(function(a){return{t:a[0],p:a[1],s:a[2]};});
+var role='c',pts=0;function $(i){return document.getElementById(i);}
+function btn(txt,fn,dis,label){var b=document.createElement('button');b.type='button';b.textContent=txt;b.disabled=!!dis;if(label)b.setAttribute('aria-label',label);b.onclick=fn;return b;}
+function cell(tr,txt){var td=document.createElement('td');td.textContent=txt;tr.appendChild(td);return td;}
+function render(){body.textContent='';B.forEach(function(b){var tr=document.createElement('tr');cell(tr,b.t);cell(tr,'$'+b.p);cell(tr,String(b.s));var td=cell(tr,'');
+if(role==='c'){td.appendChild(btn(b.s?'Buy':'Sold out',function(){b.s--;pts+=b.p;render();},!b.s));}
+else{td.appendChild(btn('\u2212',function(){if(b.s>0){b.s--;render();}},0,'Remove one '+b.t));td.appendChild(document.createTextNode(' '));td.appendChild(btn('+',function(){b.s++;render();},0,'Add one '+b.t));}
+body.appendChild(tr);});
+$('bkpts').textContent=role==='c'?'Reward points: '+pts:'Admin view: manage stock';$('bkadm').hidden=role==='c';
+$('bkc').setAttribute('aria-pressed',String(role==='c'));$('bka').setAttribute('aria-pressed',String(role==='a'));}
+$('bkadd').onclick=function(){var v=$('bkt').value.trim();if(v){B.push({t:v,p:20,s:1});$('bkt').value='';render();}};
+$('bkc').onclick=function(){role='c';render();};$('bka').onclick=function(){role='a';render();};render();})();
 </script>
 </body>
 </html>
